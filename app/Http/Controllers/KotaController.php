@@ -5,9 +5,24 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\models\Propinsi;
 use App\models\Kota;
+use Illuminate\Support\Facades\Gate;
 
 class KotaController extends Controller
 {
+    public function gate()
+    {
+        $kota = Kota::find(2);
+        if (Gate::allows('baca', $kota)){
+            echo "ID User : ".\Auth::user()->id."<br>";
+            echo "Nama User : ".\Auth::user()->name."<br>" ;
+            echo "Akses membaca tabel kota diijinkan";
+        } else {
+        echo "ID User : ".\Auth::user()->id."<br>";
+        echo "Nama User : ".\Auth::user()->name."<br>";
+        echo "Akses membaca tabel kota tidak diijinkan";
+        }
+        exit;
+    }
     public function index()
     {
         $kota = Kota::orderBy('id', 'DESC')->paginate(5);
