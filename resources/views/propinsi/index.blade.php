@@ -1,5 +1,6 @@
-@extends('layouts.app')
+@extends('adminlte::page')
 @section('content')
+<div class="container">
     <h4>Menajemen Tabel Propinsi</h4>
     <a href="{{ route('propinsi.create') }}" class="btn btn-info btn-sm">
         Propinsi Baru
@@ -39,4 +40,5 @@
         @endforeach
     </tbody>
 </table>
+</div>
 @endsection

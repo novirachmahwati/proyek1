@@ -14,5 +14,6 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call(KotaTableSeeder::class);
+        $this->call(TarifSeeder::class);
     }
 }

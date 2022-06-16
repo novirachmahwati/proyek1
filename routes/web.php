@@ -16,6 +16,9 @@ use App\Http\Controllers\AnggotaController;
 use App\Http\Controllers\KotaAutController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\KotaApiController;
+use App\Http\Controllers\KotaClientController;
+use App\Http\Controllers\TarifController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,8 +32,8 @@ use App\Http\Controllers\PostController;
 */
 
 Route::get('/', function () {
-    return view('home');
-});
+    return view('welcome');
+})->middleware('auth');
 
 Route::get('webKu/', function () {
     return "Halo Apa kabar...........?";
@@ -135,3 +138,12 @@ Route::get('service/post/gate', [PostController::class, 'gate']);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('api/kota',[KotaApiController::class, 'index']);
+Route::post('api/kota/create',[KotaApiController::class, 'create']);
+Route::delete('api/kota/{id}',[KotaApiController::class, 'delete']);
+
+Route::get('kotaClient/', [KotaClientController::class, 'index'])
+->name('kotaClient.index');
+
+Route::resource('tarif', TarifController::class);

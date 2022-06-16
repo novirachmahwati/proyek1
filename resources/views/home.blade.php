@@ -2,9 +2,6 @@
 
 @section('content')
 <div class="container">
-    <a href="{{ route('kota.gate') }}" class="btn btn-primary btn-sm">
-        Gate
-    </a>
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
